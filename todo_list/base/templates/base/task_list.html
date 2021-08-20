@@ -3,10 +3,12 @@
 <table>
     <tr>
         <th>Item</th>
+        <th>v</th>
     </tr>
     {% for task in tasks %}
     <tr>
         <td>{{ task.title }}</td>
+        <td><a href="{% url 'task' task.id %}">View</a></td>
     </tr>
     {% empty %}
     <h3>no item</h3>
