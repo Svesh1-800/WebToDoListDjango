@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
 class Task(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True,blank=True)
-    title = models.CharField(max_length=250, null=True,blank=True)
+    title = models.CharField(max_length=250,blank=False)
     description = models.TextField(null=True,blank=True)
     complete = models.BooleanField(default=False)
     create = models.DateTimeField(auto_now_add=True)
