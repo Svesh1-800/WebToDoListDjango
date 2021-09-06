@@ -131,6 +131,6 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # if user is not authenticated go to
-LOGIN_URL = 'login'
+LOGIN_URL = 'todo:login'
 # when user log in go to 
-LOGIN_REDIRECT_URL = 'tasks'
+LOGIN_REDIRECT_URL = 'todo:tasks'
