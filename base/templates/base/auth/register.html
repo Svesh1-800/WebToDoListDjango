@@ -11,18 +11,20 @@
             {{ form.username.label_tag}}
         </label>
         {{ form.username }}
+         {{ form.username.errors}}
         <label>
             {{ form.password1.label_tag}}
         </label>
         {{ form.password1 }}
+        {{ form.password1.errors }}
         <label>
             {{ form.password2.label_tag}}
         </label>
         {{ form.password2 }}
+        {{ form.password2.errors }}
         
         <input style="margin-top: 10px;" class="button" type="submit" value="Register">
     </form>
     <p>Have an account?<a href="{% url 'todo:login' %}">Login</a></p>
 </div>
-
 {% endblock content %}
