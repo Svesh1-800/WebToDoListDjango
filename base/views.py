@@ -1,5 +1,4 @@
 from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView
@@ -7,13 +6,19 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.shortcuts import redirect
+from django.contrib import messages
 
 from .models import Task
+
 
 class CustomLoginView(LoginView):
     template_name = "base/auth/login.html"
     fields = '__all__'
     redirect_authenticated_user = True
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'username or password is not correct')
+        return super().form_invalid(form)
 
 
 class RegisterPage(FormView):
@@ -66,7 +71,7 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
     fields = ['title', 'description', 'complete']
     success_url = reverse_lazy('todo:tasks')
-    
+
 
 class DeleteTask(LoginRequiredMixin, DeleteView):
     model = Task

@@ -8,22 +8,30 @@
 <div class="card-body">
     <form method="POST">
         {% csrf_token %}
-         <label>
+        <label>
             {{ form.username.label_tag}}
         </label>
         {{ form.username }}
-         {{ form.username.errors}}
         <label>
             {{ form.password.label_tag}}
         </label>
         {{ form.password }}
-        {{ form.password.errors }}
-        <input style="margin-top:10px;"class="button" type="submit" value="Login">
+        {% if messages %}
+        <div style="margin-top: 10px;">
+
+            {% for message in messages %}
+
+
+            <p style="color:black;font-style: italicl;">&#10033; {{ message }}</p>
+
+
+            {% endfor %}
+
+        </div>
+        {% endif %}
+        <input style="margin-top:10px;" class="button" type="submit" value="Login">
     </form>
     <p>Don't have an account?<a href="{% url 'todo:register' %}">Register</a></p>
 </div>
-
-
-
 
 {% endblock content %}

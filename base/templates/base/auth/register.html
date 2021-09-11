@@ -11,18 +11,30 @@
             {{ form.username.label_tag}}
         </label>
         {{ form.username }}
-         {{ form.username.errors}}
+
         <label>
             {{ form.password1.label_tag}}
         </label>
         {{ form.password1 }}
-        {{ form.password1.errors }}
+
         <label>
             {{ form.password2.label_tag}}
         </label>
         {{ form.password2 }}
-        {{ form.password2.errors }}
-        
+
+        {% if form.errors %}
+        <div style="margin-top: 10px;">
+
+            {% for field in form %}
+            {% for error in field.errors%}
+
+            <p style="color:black;font-style: italicl;">&#10033; {{ error }}</p>
+
+            {% endfor %}
+            {% endfor %}
+
+        </div>
+        {% endif %}
         <input style="margin-top: 10px;" class="button" type="submit" value="Register">
     </form>
     <p>Have an account?<a href="{% url 'todo:login' %}">Login</a></p>
