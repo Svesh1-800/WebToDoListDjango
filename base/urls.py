@@ -1,7 +1,7 @@
 from django.contrib.auth.views import LogoutView
 from django.urls import path
-from .views import TaskList, TaskCreate, TaskUpdate, DeleteTask, CustomLoginView, LogoutView, RegisterPage
-
+from .views import TaskList, TaskCreate, TaskUpdate, DeleteTask, TaskDone
+from .views import CustomLoginView, LogoutView, RegisterPage
 app_name = 'todo'
 
 urlpatterns = [
@@ -12,4 +12,5 @@ urlpatterns = [
     path('task-update/<int:pk>', TaskUpdate.as_view(),name='task-update'), 
     path('create', TaskCreate.as_view(),name='task-create'),
     path('task-delete/<int:pk>', DeleteTask.as_view(),name='task-delete'),
+    path('task-done/<int:pk>', TaskDone.as_view(),name='task-done'),
 ]

@@ -78,3 +78,16 @@ class DeleteTask(LoginRequiredMixin, DeleteView):
     context_object_name = 'task'
     success_url = reverse_lazy('todo:tasks')
     template_name = "base/task_confirm_delete.html"
+
+class TaskDone(LoginRequiredMixin, UpdateView):
+    model = Task
+    fields = ['complete']
+    context_object_name = 'task'
+    template_name = "base/task_confirm_done.html"
+
+    def post(self, request, pk):
+        note = Task.objects.get(pk=pk)
+        note.complete = True
+        note.save()
+        return redirect('todo:tasks')
+
