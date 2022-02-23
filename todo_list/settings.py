@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'base.apps.BaseConfig',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'todo:login'
 # when user log in go to 
 LOGIN_REDIRECT_URL = 'todo:tasks'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+         'toolbar': [["Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker"],
+                ['NumberedList', 'BulletedList', "Indent", "Outdent", 'JustifyLeft', 'JustifyCenter',
+                 'JustifyRight', 'JustifyBlock'],
+                ["Table", "Link", "Unlink"],
+                ["Maximize"]],
+                'height': 300,
+        'width': 'auto',
+    },
+ 
+}
